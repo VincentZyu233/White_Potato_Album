@@ -15,9 +15,41 @@ https://pan.baidu.com/s/1a-wWZOzsgAQ2FFJJcPvpKQ?pwd=wtpt
 
 
 --- 
+
 ## 生成视频
 ```bash
 git clone https://github.com/VincentZyu233/White_Potato_Album
-# https://docs.manim.community/en/stable/installation/docker.html
-docker run --rm -it -v "${PWD}:/manim" manimcommunity/manim:stable manim -qh potato_bili_cover_video.py Potato_Bili_Cover_Intro
+# uv is recommended
+# https://docs.astral.sh/uv/getting-started/installation/
+# https://gitee.com/wangnov/uv-custom/releases
+
+uv venv --python 3.10
+uv pip install "manim==0.17.3" "setuptools<70.0.0"
+uv run python -c "import pkg_resources; import manim; print('Success!')"
+
+# on Windows:
+scoop install miktex
+# on Linux (Debian/Ubuntu):
+sudo apt install texlive texlive-latex-extra fonts-noto-cjk
+# on MacOS:
+brew install --cask mactex
+
+uv run manim -pqh ./potato_bili_cover_video.py
+# or Run without cache
+uv run manim -pqh ./potato_bili_cover_video.py --disable_caching
+
+cp ./media/videos/potato_bili_cover_video/1080p60/Potato_Bili_Cover_Intro.mp4 ./Potato_Bili_Cover_Intro.mp4
+# on Windows:
+scoop install ffmpeg
+# on Linux (Debian/Ubuntu):
+sudo apt install ffmpeg
+# on MacOS:
+brew install ffmpeg
+# 视频转gif
+ffmpeg -i Potato_Bili_Cover_Intro.mp4 -vf "fps=30,scale=800:-1:flags=lanczos" -loop 0 Potato_Bili_Cover_Intro.gif
+# 倒放拼接，循环
+ffmpeg -i Potato_Bili_Cover_Intro.gif -filter_complex "[0:v]reverse[r];[0:v][r]concat=n=2:v=1:a=0" Potato_Bili_Cover_Final_Loop.gif
+
 ```
+
+![Potato_Bili_Cover_Final_Loop.gif](Potato_Bili_Cover_Final_Loop.gif)

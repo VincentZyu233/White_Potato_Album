@@ -13,7 +13,7 @@ class Potato_Bili_Cover_Intro(MovingCameraScene):
         image_potato.shift(UP*1.2222)
         image_potato.scale(0.8888)  # 放大图片（可选
         
-        tex_potato = Tex(r"WHITE POTATO", color = BLACK).next_to(image_potato, UP)
+        tex_potato = Tex("WHITE POTATO", color=BLACK).next_to(image_potato, UP)
         tex_potato.shift(DOWN*0.2222)
         self.play(
             Write(tex_potato),
@@ -34,11 +34,5 @@ class Potato_Bili_Cover_Intro(MovingCameraScene):
             self.camera.frame.animate.shift(DOWN*0.8888),
         )
     
-    # manim -pqh potato_intro.py --disable_caching
-
         self.wait(2.2222)
         
-        
-if __name__ == "__main__":
-    scene = Potato_intro(camera_config={"background_color": WHITE})
-    scene.render()
