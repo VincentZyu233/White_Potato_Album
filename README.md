@@ -1,6 +1,6 @@
 ![potato_bili_cover.png](potato_bili_cover.png)
 
-# Potato_Album
+# White_Potato_Album
 这里是B站UP主 WHITE POTATO（歪特破特抖）作品精选集  
 *01bit的数据承载精神的永恒；白色土豆将在赛博梦境中生根发芽。*
 
